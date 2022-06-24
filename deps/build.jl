@@ -52,7 +52,7 @@ outfile = joinpath(builddir, "mvndst")
 
 @static if isunix()
 	@build_steps begin
-		run(`curl -L -o mvndst.f https://raw.githubusercontent.com/scipy/scipy/master/scipy/stats/mvndst.f`)
+		run(`curl -L -o mvndst.f https://raw.githubusercontent.com/scipy/scipy/main/scipy/stats/mvndst.f`)
 
 		if useIntelFortran
 			run(`ifort -O3 -xHost -fPIC -fpp -openmp -integer-size 64 -shared  $src -o $outfile`)
@@ -67,7 +67,7 @@ end
 
 @static if iswindows()
 	@build_steps begin
-		download("https://raw.githubusercontent.com/scipy/scipy/master/scipy/stats/mvndst.f",
+		download("https://raw.githubusercontent.com/scipy/scipy/main/scipy/stats/mvndst.f",
 					   joinpath(depsdir, "mvndst.f"))
 
 		println("fortran version")
